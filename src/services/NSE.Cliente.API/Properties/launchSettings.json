@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "NSE.Cliente.API": {
+    "NSE.Clientes.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

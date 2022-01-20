@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NSE.Catalogo.API.Interfaces;
+using NSE.Catalogo.API.Data;
 using NSE.Catalogo.API.Models;
 using NSE.WebApi.Core.Identidade;
 using System;
