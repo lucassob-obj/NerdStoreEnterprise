@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NSE.WebApp.MVC.Extensions;
-using System;
+using NSE.WebApp.MVC.Models;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +37,11 @@ namespace NSE.WebApp.MVC.Services
 
             response.EnsureSuccessStatusCode();
             return true;
+        }
+
+        protected ResponseResult RetornoOk()
+        {
+            return new ResponseResult();
         }
     }
 }
