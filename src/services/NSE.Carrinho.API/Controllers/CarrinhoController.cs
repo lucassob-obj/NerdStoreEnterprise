@@ -17,9 +17,10 @@ namespace NSE.Carrinho.API.Controllers
         private readonly IAspNetUser _user;
         private readonly CarrinhoContext _context;
 
-        public CarrinhoController(IAspNetUser user)
+        public CarrinhoController(IAspNetUser user, CarrinhoContext context)
         {
             _user = user;
+            _context = context;
         }
 
         [HttpGet("carrinho")]
@@ -38,7 +39,6 @@ namespace NSE.Carrinho.API.Controllers
             else
                 ManipularCarrinhoExistente(carrinho, item);
 
-            ValidarCarrinho(carrinho);
             if (!OperacaoValida()) return CustomResponse();
 
             await PersistirDados();
@@ -95,6 +95,7 @@ namespace NSE.Carrinho.API.Controllers
             var carrinho = new CarrinhoCliente(_user.ObterUserId());
             carrinho.AdicionarItem(item);
 
+            ValidarCarrinho(carrinho);
             _context.CarrinhoCliente.Add(carrinho);
         }
 
@@ -103,7 +104,7 @@ namespace NSE.Carrinho.API.Controllers
             var produtoItemExistente = carrinho.CarrinhoItemExistente(item);
 
             carrinho.AdicionarItem(item);
-            //ValidarCarrinho(carrinho);
+            ValidarCarrinho(carrinho);
 
             if (produtoItemExistente)
             {
