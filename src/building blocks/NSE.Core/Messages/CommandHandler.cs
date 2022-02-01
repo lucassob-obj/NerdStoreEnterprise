@@ -13,14 +13,14 @@ namespace NSE.Core.Messages
 
         protected ValidationResult ValidationResult;
 
-        protected void AdicionaErro(string mensagem)
+        protected void AdicionarErro(string mensagem)
         {
             ValidationResult.Errors.Add(new ValidationFailure(string.Empty, mensagem));
         }
 
         protected async Task<ValidationResult> PersistirDados(IUnitOfWork uow)
         {
-            if (!await uow.Commit()) AdicionaErro("Houve um erro ao persistir os dados");
+            if (!await uow.Commit()) AdicionarErro("Houve um erro ao persistir os dados");
 
             return ValidationResult;
         }
