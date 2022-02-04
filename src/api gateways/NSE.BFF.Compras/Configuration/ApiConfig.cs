@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSE.BFF.Compras.Extensions;
 using NSE.WebApi.Core.Identidade;
 
 namespace NSE.BFF.Compras.Configuration
@@ -13,7 +14,7 @@ namespace NSE.BFF.Compras.Configuration
         {
             services.AddControllers();
 
-            //services.Configure<AppServicesSettings>(configuration);
+            services.Configure<AppServicesSettings>(configuration);
 
             services.AddCors(options =>
             {
