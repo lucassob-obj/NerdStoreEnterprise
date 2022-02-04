@@ -63,5 +63,16 @@ namespace NSE.WebApp.MVC.Controllers
             if (quantidade < 1) AdicionarErroValidacao($"Escolha ao menos uma unidade do produto {produto.Nome}");
             if (quantidade > produto.QuantidadeEstoque) AdicionarErroValidacao($"O produto {produto.Nome} possui {produto.QuantidadeEstoque} unidades em estoque, você selecionou {quantidade}");
         }
+
+        [HttpPost]
+        [Route("carrinho/aplicar-voucher")]
+        public async Task<IActionResult> AplicarVoucher(string voucherCodigo)
+        {
+            var resposta = await _comprasBffService.AplicarVoucherCarrinho(voucherCodigo);
+
+            if (ResponsePossuiErros(resposta)) return View("Index", await _comprasBffService.ObterCarrinho());
+
+            return RedirectToAction("Index");
+        }
     }
 }
